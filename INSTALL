@@ -1,0 +1,28 @@
+this is a minimal install for running mixxx in the studio with tracks hosted
+on the server (or testwise on an external USB HD). It is based on stock gentoo
+and some packages from the pro-audio overlay.
+
+files i hacked so far
+
+- /etc/localtime
+- /etc/conf.d/hostname
+- /etc/hosts
+- /etc/portage/*
+- /etc/make.conf (added layman and select few global configs)
+
+i plan on keeping this a minimal as possibble and to document complex stuff enough
+so that it will be easy to puppetize this to a useable level. puppetization should
+start as sonn as i have the kernel sorted out.
+
+for now the machine contains her own portage tree since thas was easier during 
+install seeing that punk, my old home machine, is broken.
+
+the kernel setup is somewhat trimmed down for ICH6 based machines since that is what 
+rabe has throughout but i plan on trimming down more of the kernel.
+
+the kernel is built using genkernel and i haven't gotten round to doing much boottime
+optimizations as of now. I opted for gentoo since i plan on adding earlyboot splashes
+at some stage in this build and i figured that might make it easier later.
+
+it seems fs-cache might help in solvng the ocal data qos problems we are experiencing
+and i will try that down the line

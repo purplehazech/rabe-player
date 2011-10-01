@@ -1,0 +1,7 @@
+
+
+- configure metalog
+- configure sysloging with logrotate
+- configure zabbix
+- make autologin via inittab happen
+- defer local dhcp startup
