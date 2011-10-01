@@ -17,4 +17,11 @@ class vim {
     ]
   }
 
+  # eselect config
+  file { '/etc/env.d/99editor':
+    ensure  => file,
+    content => 'EDITOR="/usr/bin/vim"',
+    require => Package['app-editors/vim']
+  }
+
 }
