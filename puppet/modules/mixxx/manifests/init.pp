@@ -80,4 +80,24 @@ class mixxx {
       Package['x11-libs/qt-qt3support'],
     ]
   }
+
+  # mixxonly xsession
+  file { '/etc/X11/Sessions/Xfce4-mixxx':
+    ensure => file,
+    content => 'mixxx && startxfce4',
+    require => Package['media-sound/mixxx']
+  }
+
+  # mixxx user -> this is the autostart user
+  user { 'player':
+    ensure => present,
+    name   => 'player',
+    home   => '/var/lib/player',
+    gid    => 'player',
+    groups => [
+      'audio'
+    ],
+    managehome => true,
+    membership => inclusive,
+  }
 }
