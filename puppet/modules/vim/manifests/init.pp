@@ -9,11 +9,19 @@ class vim {
     content => 'app-editors/vim acl gpm nls perl python bash-completion ruby',
     require => File['/etc/portage/package.use/app-editors']
   }
+  file { '/etc/bash_completion.d':
+    ensure => directory
+  }
+  file { '/etc/bash_completion.d/vim':
+    ensure  => '/usr/share/bash-completion/vim',
+    require => File['/etc/bash_completion.d']
+  }
 
   package { 'app-editors/vim':
     ensure  => installed,
     require => [
-      File['/etc/portage/package.use/app-editors/vim']
+      File['/etc/portage/package.use/app-editors/vim'],
+      File['/etc/bash_completion.d/vim']
     ]
   }
 
