@@ -76,8 +76,8 @@ class mixxx {
   package { 'media-sound/mixxx':
     ensure  => installed,
     require => [
-      File['/etc/portage/package.use/media-sound/mixxx],
-      Package['x11-libs/qt-qt3support']
+      File['/etc/portage/package.use/media-sound/mixxx'],
+      Package['x11-libs/qt-qt3support'],
     ]
   }
 }
