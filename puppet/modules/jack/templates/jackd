@@ -1,0 +1,6 @@
+
+JACKDUSER="player"
+
+JACKDHOME="/var/lib/player"
+
+LOG="/var/log/jackd.log"
