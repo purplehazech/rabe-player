@@ -100,4 +100,18 @@ class mixxx {
     managehome => true,
     membership => inclusive,
   }
+
+  file { '/var/lib/player/.mixxx':
+    ensure  => directory,
+    owner   => 'player',
+    group   => 'player',
+    require => User['player'],
+  }
+  file { '/var/lib/player/.mixxx/mixxx.cfg':
+    ensure  => '/usr/share/puppet/modules/mixxx/files/mixxx.cfg',
+    owner   => 'player',
+    group   => 'player',
+    require => File['/var/lib/player/.mixxx']
+  }
+
 }
