@@ -85,7 +85,7 @@ class mixxx {
   file { '/etc/X11/Sessions/Xfce4-mixxx':
     ensure => file,
     content => 'mixxx && startxfce4',
-    require => Package['media-sound/mixxx']
+    require => Package['media-sound/mixxx'],
   }
 
   # mixxx user -> this is the autostart user
@@ -107,11 +107,23 @@ class mixxx {
     group   => 'player',
     require => User['player'],
   }
+
   file { '/var/lib/player/.mixxx/mixxx.cfg':
-    ensure  => '/usr/share/puppet/modules/mixxx/files/mixxx.cfg',
+    ensure  => file,
+    content => template('mixxx/mixxx.cfg'),
     owner   => 'player',
     group   => 'player',
-    require => File['/var/lib/player/.mixxx']
+    require => File['/var/lib/player/.mixxx'],
+  }
+
+  # preconfigure jack so the init script is ready 
+  # this is the reason we include mixxx before jack
+  # @todo check how nasty this is on vanilla boxen (ie is 1 puppet run enough)
+  file { "/var/lib/player/.jackdrc":
+    ensure  => file,
+    owner   => 'player',
+    group   => 'player',
+    content => '/usr/bin/jackd -R -dalsa -dhw:0 -r96000 -p1024 -n2',
   }
 
 }
