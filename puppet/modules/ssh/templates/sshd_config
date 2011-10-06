@@ -1,0 +1,13 @@
+
+PasswordAuthentication no
+
+UsePAM yes
+
+# @todo disable this when done with testing!
+X11Forwarding yes
+
+PrintMotd no
+PrintLastLog no
+
+Subsystem	sftp	/usr/lib/misc/sftp-server
+
