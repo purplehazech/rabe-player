@@ -1,0 +1,44 @@
+#N canvas 104 0 443 379 10;
+#X obj 83 97 udpreceive 10000;
+#X obj 83 118 unpackOSC;
+#X obj 83 244 ctlout 1;
+#X obj 83 223 * 127;
+#X obj 144 223 * 127;
+#X obj 217 223 * 127;
+#X obj 278 223 * 127;
+#X obj 144 244 ctlout 2;
+#X obj 217 244 ctlout 3;
+#X obj 278 244 ctlout 4;
+#X obj 83 139 routeOSC /ard2;
+#X obj 83 181 routeOSC /fader0 /fader1;
+#X obj 83 202 routeOSC /start /stop;
+#X obj 217 202 routeOSC /start /stop;
+#X obj 119 225 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 181 223 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 253 225 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 315 223 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 83 160 routeOSC /player0;
+#X text 82 70 OSC to MIDI Gateway for receiving start and stop actions
+from /ard2/player0/fader0 and /ard2/player0/fader1;
+#X connect 0 0 1 0;
+#X connect 1 0 10 0;
+#X connect 3 0 2 0;
+#X connect 4 0 7 0;
+#X connect 5 0 8 0;
+#X connect 6 0 9 0;
+#X connect 10 0 18 0;
+#X connect 11 0 12 0;
+#X connect 11 1 13 0;
+#X connect 12 0 3 0;
+#X connect 12 0 14 0;
+#X connect 12 1 4 0;
+#X connect 12 1 15 0;
+#X connect 13 0 5 0;
+#X connect 13 0 16 0;
+#X connect 13 1 6 0;
+#X connect 13 1 17 0;
+#X connect 18 0 11 0;
