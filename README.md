@@ -1,6 +1,13 @@
 Studio Player for RaBe
 ======================
 
+This repository has been abandoned in favor of the stack
+in https://www.github.com/radiorabe/puppet.
+
+It will be deleted here as soon as every part of it has been reviewed for
+salvageable parts. This should not matter since this stack never made it
+past POC.
+
 Gentoo based DAW with live-assist and cartwall support for use in radio studios.
 
 I recently started building the described system. Since we are planning on using
